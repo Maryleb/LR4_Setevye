@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tbl_container {
+  margin: 5px;
+}
+table {
+  border: solid 1px grey;
+}
+table tr:nth-child(odd) {
+  background-color: #ffffff;/* фон нечетных строк */
+}
+
+table tr:nth-child(even) {
+  background-color: #bdbdbd;/* фон четных строк */
+}
+th {
+  background-color: #bdbdbd;
+  padding: 5px;
+}
+td {
+  padding: 5px;
+}

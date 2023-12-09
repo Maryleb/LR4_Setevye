@@ -1,0 +1,47 @@
+<html>
+  <link rel="stylesheet" href="booking.css">
+  <head>
+    <title> Забронированные номера </title>
+    {% macro render_table(table_name, relation) %}
+      <div class="tbl_container">
+        <p>
+          <b>{{table_name}} </b>
+        {% set n = len(relation) %}
+        </p>
+        <table>
+          <tr>
+            {% for name in relation.dtypes.index %}
+            <th>{{name}}</th>
+            {% endfor %}
+          </tr>
+
+          <tbody>
+            {% for i in range(n) %}
+            <tr>
+              {% for name in relation.dtypes.index %}
+                  <td> {{ relation.loc[i, name] }} </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endmacro %}
+
+    {% macro render_form(param_1, param_2) %}
+      <p>
+        Введите границы определения спроса.<br>
+        <form>
+        Введите нижнюю границу:
+        <input type="number" value={{param_1}}>
+        Введите верхнюю границу:
+        <input type="number" value={{param_2}}>
+        </form>
+      </p>
+    {% endmacro %}
+  </head>
+  <body>
+    {{render_form(param_1, param_2)}}
+    {{render_table("Забронированные номера", booked_rooms)}}
+  </body>
+</html>
